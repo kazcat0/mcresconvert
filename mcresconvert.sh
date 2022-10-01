@@ -143,7 +143,7 @@ convert_file() {
 	echo "Found: $n"
 	echo "   - File: `basename "$@"`"
 	(
-		texture_dir=~/.var/app/net.minetest.Minetest/.minetest/textures
+		texture_dir=~/.minetest/textures
 		if [ ! -d $texture_dir ]; then
 		  if [ -n "$NOGUI" ]; then
 				echo "Creating texture directory under: \"$texture_dir\"."
@@ -662,7 +662,7 @@ else
 	--text "Do you want to convert installed resource packs, or convert a single zip file?" \
 	--column="Description" --height 400 \
 	"all" "Find Minecraft resource packs installed in your minecraft folders and convert those automatically" \
-	"default" "(Unworking) Convert the default resource pack" \
+	"default" "Convert the default resource pack" \
 	"other" "Choose a file to convert manually" 2> /dev/null`
 fi
 
@@ -680,7 +680,7 @@ elif [ "$choice" == "other" ]; then
 	# assume file name to zip is passed
 	convert_file "`$ZENITY --file-selection --file-filter="*.zip" 2> /dev/null`"
 elif [ "$choice" == "default" ]; then
-	if ! cp ~/.minecraft/versions/1.9/1.9.jar /tmp/mc-default-1.9.zip ; then
+	if ! cp ~/.minecraft/versions/1.19.2/1.19.2.jar /tmp/mc-default-1.9.zip ; then
 		exit 1
 	fi
 	convert_file /tmp/mc-default-1.9.zip
