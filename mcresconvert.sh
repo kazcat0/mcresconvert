@@ -378,6 +378,11 @@ block/horn_coral.png default_coral_green.png
 block/horn_coral_block.png default_coral_brown.png
 block/fire_coral_block.png default_coral_orange.png
 block/dead_brain_coral_block.png default_coral_skeleton.png
+block/copper_block.png default_copper_block.png
+block/copper_ore.png default_mineral_copper.png
+item/copper_ingot.png default_copper_ingot.png
+item/oak_boat.png boats_inventory.png
+item/oak_boat.png boats_wield.png
 RENAMES
 ) |		while read IN OUT FLAG; do
 			echo -e "." >> _n/_tot
@@ -559,16 +564,9 @@ RENAMES
 			echo -e "." >> _n/_counter
 		fi
 
-		# make copper and bronze from colorizing steel
+		# make bronze from colorizing steel
 		echo -e "...." >> _n/_tot
 		if [ -f _n/item/iron_ingot.png ]; then
-			#ffa05b
-			convert -size ${PXSIZE}x${PXSIZE} xc:\#CA8654 _n/_c.png
-
-			composite -compose Screen _n/_c.png _n/item/iron_ingot.png _n/_i.png
-			composite -compose Dst_In _n/item/iron_ingot.png _n/_i.png -alpha Set default_copper_ingot.png
-
-			convert _n/block/iron_block.png _n/_c.png -compose Overlay -composite default_copper_block.png
 
 			#ffb07c
 			convert -size ${PXSIZE}x${PXSIZE} xc:\#6F4C35 _n/_c.png
